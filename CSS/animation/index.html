@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      animation-duration: 5s;
+    }
+
+    .changing {
+      animation: change 2s;
+    }
+
+    @keyframes change {
+      from {
+        background: yellow;
+      }
+      to {
+        background: blue;
+        margin-left: 200px;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <button id="btn">Start</button>
+
+  <script>
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click',(e) => {
+      document.querySelector(".box").className = "box";
+      window.requestAnimationFrame(function(time) {
+        window.requestAnimationFrame(function(time) {
+          document.querySelector(".box").className = "box changing";
+        });
+      });
+    }, false);
+  </script>
+</body>
+
+</html>
